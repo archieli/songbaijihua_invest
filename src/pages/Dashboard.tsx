@@ -6,7 +6,8 @@ import { usePortfolio } from '@/hooks/usePortfolio';
 import { useStore } from '@/store';
 import { priceOn } from '@/data/nav';
 import { planRebalance } from '@/domain/rebalance';
-import { Alert, Badge, Button, Card, DriftBar, Empty, Money, PageHeader, Pct, Stat } from '@/components/ui';
+import { Alert, Badge, Button, Card, Empty, Money, PageHeader, Pct, Stat } from '@/components/ui';
+import { AllocationDonut, ASSET_COLORS } from '@/components/AllocationDonut';
 import type { ReminderLevel } from '@/domain/schedule';
 
 /** 课件 P28 示例：2025-09-08 一次性投入 20 万 */
@@ -114,35 +115,43 @@ export default function Dashboard() {
             <Stat label="最大偏离" value={<Pct v={valuation.maxDrift} />} sub={valuation.maxDrift > 0.05 ? '偏离较大，可提前再平衡' : '在正常范围'} tone={valuation.maxDrift > 0.05 ? 'up' : 'muted'} />
           </div>
 
-          <Card title="持仓与目标比例" right={<span className="text-xs text-slate-400">竖线为目标比例</span>}>
-            <div className="space-y-3">
-              {valuation.rows.map((r) => {
-                const f = FUND_BY_CODE[r.code];
-                const override = settings.priceOverrides[r.code];
-                return (
-                  <div key={r.code} className="grid grid-cols-12 items-center gap-2 text-sm">
-                    <div className="col-span-5 md:col-span-3">
-                      <div className="font-medium text-slate-800">{f.shortName} <span className="text-xs text-slate-400">{r.code}</span></div>
-                      <div className="text-xs text-slate-500">{f.assetLabel}</div>
-                    </div>
-                    <div className="col-span-7 md:col-span-4">
-                      <DriftBar weight={r.weight} target={r.targetWeight} />
-                      <div className="mt-1 flex justify-between text-xs text-slate-500">
-                        <span><Pct v={r.weight} /> / 目标 <Pct v={r.targetWeight} digits={0} /></span>
-                        <span className={r.drift > 0.005 ? 'text-up' : r.drift < -0.005 ? 'text-amber-600' : ''}><Pct v={r.drift} sign /></span>
+          <Card title="持仓与目标比例" right={<span className="text-xs text-slate-400">外环实际占比 · 内环目标占比</span>}>
+            <div className="grid items-center gap-6 md:grid-cols-[240px_1fr]">
+              <AllocationDonut
+                slices={valuation.rows.map((r) => ({ key: r.code, label: FUND_BY_CODE[r.code].shortName, value: r.value, weight: r.weight, color: ASSET_COLORS[FUND_BY_CODE[r.code].assetClass] }))}
+                targets={valuation.rows.map((r) => ({ key: r.code, label: FUND_BY_CODE[r.code].shortName, value: 0, weight: r.targetWeight, color: ASSET_COLORS[FUND_BY_CODE[r.code].assetClass] }))}
+                centerTop="总市值"
+                centerBottom={`${(valuation.total / 10_000).toFixed(1)} 万`}
+              />
+              <div className="space-y-3">
+                {valuation.rows.map((r) => {
+                  const f = FUND_BY_CODE[r.code];
+                  const override = settings.priceOverrides[r.code];
+                  return (
+                    <div key={r.code} className="grid grid-cols-12 items-center gap-2 text-sm">
+                      <div className="col-span-7 flex items-center gap-2 md:col-span-4">
+                        <span className="h-3 w-3 shrink-0 rounded-sm" style={{ background: ASSET_COLORS[f.assetClass] }} />
+                        <div>
+                          <div className="font-medium text-slate-800">{f.shortName} <span className="text-xs text-slate-400">{r.code}</span></div>
+                          <div className="text-xs text-slate-500">{f.assetLabel}</div>
+                        </div>
+                      </div>
+                      <div className="col-span-5 md:col-span-3 md:text-right">
+                        <div className="num"><Pct v={r.weight} /> <span className="text-xs text-slate-400">/ 目标 <Pct v={r.targetWeight} digits={0} /></span></div>
+                        <div className={`text-xs ${r.drift > 0.005 ? 'text-up' : r.drift < -0.005 ? 'text-amber-600' : 'text-slate-400'}`}><Pct v={r.drift} sign /></div>
+                      </div>
+                      <div className="col-span-6 md:col-span-3 md:text-right">
+                        <div className="num"><Money v={r.value} /> 元</div>
+                        <div className="text-xs text-slate-500">{r.shares.toLocaleString()} 份 × {r.price.toFixed(3)} {override && <Badge tone="amber">手动价</Badge>}</div>
+                      </div>
+                      <div className="col-span-6 md:col-span-2 md:text-right">
+                        <div className={`num ${r.pnl > 0 ? 'text-up' : r.pnl < 0 ? 'text-down' : ''}`}><Money v={r.pnl} sign /></div>
+                        <div className="text-xs text-slate-500">成本 {r.avgCost.toFixed(3)}</div>
                       </div>
                     </div>
-                    <div className="col-span-6 md:col-span-3 md:text-right">
-                      <div className="num"><Money v={r.value} /> 元</div>
-                      <div className="text-xs text-slate-500">{r.shares.toLocaleString()} 份 × {r.price.toFixed(3)} {override && <Badge tone="amber">手动价</Badge>}</div>
-                    </div>
-                    <div className="col-span-6 md:col-span-2 md:text-right">
-                      <div className={`num ${r.pnl > 0 ? 'text-up' : r.pnl < 0 ? 'text-down' : ''}`}><Money v={r.pnl} sign /></div>
-                      <div className="text-xs text-slate-500">成本 {r.avgCost.toFixed(3)}</div>
-                    </div>
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
             </div>
           </Card>
 
