@@ -28,8 +28,9 @@ export default function App() {
       {/* 桌面侧栏 */}
       <aside className="hidden w-56 shrink-0 border-r border-slate-200 bg-white md:block">
         <div className="px-5 py-5">
-          <div className="text-lg font-bold text-pine-700">松柏计划</div>
-          <div className="text-xs text-slate-500">投资管理工具</div>
+          <div className="text-lg font-bold text-pine-700">冬眠行动</div>
+          <div className="text-xs text-slate-500">松柏计划持有助手</div>
+          <div className="mt-2 text-xs text-pine-500">穿越寒冬，安心持有</div>
         </div>
         <nav className="px-3">
           {NAV.map((n) => (
@@ -56,8 +57,8 @@ export default function App() {
       {/* 移动端顶栏 */}
       <header className="sticky top-0 z-20 border-b border-slate-200 bg-white/95 backdrop-blur md:hidden" style={{ top: 'env(safe-area-inset-top, 0px)' }}>
         <div className="flex items-center justify-between px-4 py-3">
-          <div className="text-base font-bold text-pine-700">松柏计划</div>
-          <div className="text-xs text-slate-500">投资管理工具</div>
+          <div className="text-base font-bold text-pine-700">冬眠行动</div>
+          <div className="text-xs text-slate-500">穿越寒冬，安心持有</div>
         </div>
         <nav className="flex gap-1 overflow-x-auto px-2 pb-2">
           {NAV.map((n) => (

@@ -25,7 +25,16 @@
       "Bash(git add *)",
       "Bash(git commit -q -m 'feat: 松柏计划投资管理系统 v0.1 *)",
       "Bash(ssh -o BatchMode=yes -o ConnectTimeout=10 -T git@github.com)",
-      "Read(//Users/taoli/.ssh/**)"
+      "Read(//Users/taoli/.ssh/**)",
+      "Bash(git credential-osxkeychain *)",
+      "Bash(python3 -c \"import sys,json;d=json.load\\(sys.stdin\\);print\\(d.get\\('full_name'\\) or d.get\\('message'\\), d.get\\('html_url',''\\), d.get\\('errors',''\\)\\)\")",
+      "Bash(git remote *)",
+      "Bash(git push *)",
+      "Bash(python3 -c \"import sys,json;d=json.load\\(sys.stdin\\);print\\(d.get\\('html_url'\\) or d.get\\('message'\\), d.get\\('build_type',''\\)\\)\")",
+      "Bash(curl -s https://archieli.github.io/songbaijihua_invest/)",
+      "Bash(python3 -c \"import qrcode; print\\('qrcode ok'\\)\")",
+      "Bash(python3 -c \"import segno; print\\('segno ok'\\)\")",
+      "Bash(npx -y qrcode -t svg -w 400 -m 1 -o qr.svg \"https://archieli.github.io/songbaijihua_invest/\")"
     ]
   }
 }

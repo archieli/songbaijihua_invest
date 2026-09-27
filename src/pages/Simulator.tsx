@@ -7,7 +7,7 @@ import { buildPriceTable, delayedEntry, downsample, rollingReturns, runBacktest,
 import { fmtMoney } from '@/domain/lots';
 import { Alert, Badge, Card, Empty, Field, Money, NumberInput, PageHeader, Pct, Stat, inputCls } from '@/components/ui';
 
-const SERIES = { value: '#2a78d6', invested: '#898781' };
+const SERIES = { value: '#4d735f', invested: '#9e9b91' };
 
 export default function Simulator() {
   const { nav, loading, error } = useNav();
@@ -113,7 +113,7 @@ export default function Simulator() {
                 <div className="h-72 w-full">
                   <ResponsiveContainer>
                     <LineChart data={chartData} margin={{ top: 8, right: 12, left: 4, bottom: 0 }}>
-                      <CartesianGrid stroke="#e1e0d9" vertical={false} />
+                      <CartesianGrid stroke="#eeece6" vertical={false} />
                       <XAxis dataKey="date" tick={{ fontSize: 11, fill: '#898781' }} tickLine={false} axisLine={{ stroke: '#c3c2b7' }} minTickGap={48} tickFormatter={(d: string) => d.slice(0, 7)} />
                       <YAxis tick={{ fontSize: 11, fill: '#898781' }} tickLine={false} axisLine={false} width={56} tickFormatter={(v: number) => `${(v / 10000).toFixed(1).replace(/\.0$/, '')}万`} domain={['auto', 'auto']} />
                       <Tooltip

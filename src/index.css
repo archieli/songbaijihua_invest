@@ -1,18 +1,57 @@
 @import 'tailwindcss';
 
+/* 冬眠行动 · 视觉令牌
+   高级浅色风：暖白底、雾灰文字、松针绿点缀；涨跌用低饱和砖红 / 柔绿。
+   全站颜色都走这些令牌，页面结构与功能不变。 */
 @theme {
-  --color-pine-50: #eef4fb;
-  --color-pine-100: #d9e6f5;
-  --color-pine-200: #b7cfea;
-  --color-pine-300: #86aedb;
-  --color-pine-400: #5688c6;
-  --color-pine-500: #3169b0;
-  --color-pine-600: #1e56a0;
-  --color-pine-700: #1a478a;
-  --color-pine-800: #163b70;
-  --color-pine-900: #122f58;
-  --color-up: #d64545;
-  --color-down: #1f9d55;
+  /* 松针绿：品牌主色（原 pine 蓝改为低饱和青绿） */
+  --color-pine-50: #eef3ef;
+  --color-pine-100: #dbe6df;
+  --color-pine-200: #b9cec1;
+  --color-pine-300: #8fae9b;
+  --color-pine-400: #678c78;
+  --color-pine-500: #4d735f;
+  --color-pine-600: #3d5f4d;
+  --color-pine-700: #324d3f;
+  --color-pine-800: #283d33;
+  --color-pine-900: #1e2e27;
+
+  /* 雾灰：覆盖 slate，去掉冷蓝调 */
+  --color-slate-50: #f7f6f2;
+  --color-slate-100: #eeece6;
+  --color-slate-200: #e0ddd5;
+  --color-slate-300: #c9c6bc;
+  --color-slate-400: #9e9b91;
+  --color-slate-500: #77756c;
+  --color-slate-600: #5c5a52;
+  --color-slate-700: #46453e;
+  --color-slate-800: #302f2a;
+  --color-slate-900: #1f1e1a;
+
+  --color-white: #fdfcf9;
+
+  /* 涨跌：保留 A 股红涨绿跌习惯，但降饱和 */
+  --color-up: #b5594d;
+  --color-down: #4f8767;
+
+  /* 提醒 / 警示：暖灰红、柔黄 */
+  --color-red-50: #f7ecea;
+  --color-red-200: #e4c4bf;
+  --color-red-300: #d4a59e;
+  --color-red-700: #9c4a40;
+  --color-red-900: #6e332c;
+  --color-red-600: #9c4a40;
+  --color-amber-50: #f6f1e4;
+  --color-amber-200: #e6d8b3;
+  --color-amber-400: #c9ad63;
+  --color-amber-600: #8f7431;
+  --color-amber-700: #7a6229;
+  --color-amber-900: #5a4820;
+  --color-emerald-50: #ecf2ee;
+  --color-emerald-200: #c4d8cc;
+  --color-emerald-700: #3d6b53;
+  --color-emerald-900: #2c4d3c;
+
   --font-sans: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', system-ui, sans-serif;
 }
 
