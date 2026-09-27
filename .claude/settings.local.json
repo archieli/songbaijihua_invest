@@ -1,0 +1,31 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm -v)",
+      "Bash(python3 -V)",
+      "Bash(curl -s --max-time 10 -o /dev/null -w '%{http_code}\\\\n' https://registry.npmjs.org/react)",
+      "Bash(curl -s --max-time 30 -A 'Mozilla/5.0' \"https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sh518880,day,2000-01-01,2030-12-31,8000,qfq\")",
+      "Bash(curl -s --max-time 30 -A 'Mozilla/5.0' \"https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sh518880,day,,,8000,qfq\")",
+      "Bash(curl -s --max-time 30 -A 'Mozilla/5.0' \"https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sh518880,day,2004-01-01,2026-12-31,640,qfq\")",
+      "Bash(python3 -c \"import sys,json;d=json.load\\(sys.stdin\\);a=d['data']['sh518880'].get\\('qfqday',[]\\);print\\(len\\(a\\),a[0][:3],a[-1][:3]\\)\")",
+      "Bash(npm install *)",
+      "Bash(node scripts/fetch-nav.mjs)",
+      "Bash(npx vitest *)",
+      "Bash(npx tsc *)",
+      "Bash(npx vite *)",
+      "Bash(curl -s -o /dev/null -w 'preview HTTP %{http_code}\\\\n' http://127.0.0.1:4173/)",
+      "Bash(curl -s http://127.0.0.1:4173/data/nav/index.json)",
+      "Bash(env)",
+      "Bash(curl -s --noproxy '*' -o /dev/null -w 'noproxy HTTP %{http_code}\\\\n' http://127.0.0.1:4173/)",
+      "Bash(pkill -f \"chrome-profile\")",
+      "Bash(pkill -f \"vite preview\")",
+      "Bash(gh auth *)",
+      "Bash(git config *)",
+      "Bash(git init *)",
+      "Bash(git add *)",
+      "Bash(git commit -q -m 'feat: 松柏计划投资管理系统 v0.1 *)",
+      "Bash(ssh -o BatchMode=yes -o ConnectTimeout=10 -T git@github.com)",
+      "Read(//Users/taoli/.ssh/**)"
+    ]
+  }
+}

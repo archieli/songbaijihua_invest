@@ -1,0 +1,71 @@
+{
+  "funds": [
+    {
+      "code": "159201",
+      "market": "sz",
+      "name": "华夏国证自由现金流ETF",
+      "shortName": "自由现金流",
+      "assetClass": "cn_stock",
+      "assetLabel": "中国股票",
+      "targetWeight": 0.25,
+      "feeRate": 0.003,
+      "inception": "2025-02",
+      "aum": 36,
+      "tags": ["价值投资", "低波动"],
+      "proxy": { "symbol": "sh000922", "name": "中证红利指数", "note": "基金成立前用中证红利指数回溯，与自由现金流指数同属价值/分红风格" }
+    },
+    {
+      "code": "513500",
+      "market": "sh",
+      "name": "博时标普500ETF",
+      "shortName": "标普500",
+      "assetClass": "us_stock",
+      "assetLabel": "美国股票",
+      "targetWeight": 0.25,
+      "feeRate": 0.009,
+      "inception": "2013-12",
+      "aum": 200,
+      "tags": ["美股龙头", "国际分散"]
+    },
+    {
+      "code": "511090",
+      "market": "sh",
+      "name": "鹏扬中债-30年期国债ETF",
+      "shortName": "30年国债",
+      "assetClass": "cn_bond_long",
+      "assetLabel": "中国超长期国债",
+      "targetWeight": 0.15,
+      "feeRate": 0.003,
+      "inception": "2023-05",
+      "aum": 160,
+      "tags": ["纯国债", "久期长"],
+      "proxy": { "symbol": "sh511010", "name": "国泰国债ETF（5年期）", "note": "基金成立前用国泰国债ETF回溯，久期较短，波动会被低估" }
+    },
+    {
+      "code": "161115",
+      "market": "sz",
+      "name": "易方达岁丰添利债券(LOF)",
+      "shortName": "岁丰添利",
+      "assetClass": "cn_bond",
+      "assetLabel": "中国债券",
+      "targetWeight": 0.15,
+      "feeRate": 0.0053,
+      "inception": "2010-11",
+      "aum": 168,
+      "tags": ["主动管理", "灵活配置"]
+    },
+    {
+      "code": "518880",
+      "market": "sh",
+      "name": "华安黄金ETF",
+      "shortName": "黄金",
+      "assetClass": "gold",
+      "assetLabel": "黄金",
+      "targetWeight": 0.2,
+      "feeRate": 0.007,
+      "inception": "2013-07",
+      "aum": 598,
+      "tags": ["抗通胀", "避险属性"]
+    }
+  ]
+}
