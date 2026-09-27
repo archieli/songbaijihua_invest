@@ -63,7 +63,7 @@ export default function Dashboard() {
   return (
     <div>
       <PageHeader
-        title="仪表盘"
+        title="松柏计划"
         subtitle={nav ? `行情更新至 ${nav.latestDate}（前复权收盘价）` : loading ? '正在加载行情…' : ''}
         action={
           <div className="flex gap-2">

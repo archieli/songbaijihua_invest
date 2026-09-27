@@ -12,7 +12,7 @@ import Settings from './pages/Settings';
 const Simulator = lazy(() => import('./pages/Simulator'));
 
 const NAV = [
-  { to: '/', label: '仪表盘', icon: '◎' },
+  { to: '/', label: '松柏计划', icon: '◎' },
   { to: '/ledger', label: '记账', icon: '▤' },
   { to: '/rebalance', label: '再平衡', icon: '⇄' },
   { to: '/monthly', label: '每月定投', icon: '⤴' },
